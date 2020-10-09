@@ -1,0 +1,34 @@
+if TARGET_SABER_SABER2020
+
+config SYS_BOARD
+	default "saber2020"
+
+config SYS_VENDOR
+	default "saber"
+
+config SYS_CPU
+	default "generic"
+
+config SYS_CONFIG_NAME
+	default "saber-saber2020"
+
+config SYS_TEXT_BASE
+	default 0x80400000
+
+config DEFAULT_DEVICE_TREE
+	default "saber"
+
+config SPL_TEXT_BASE
+	default 0x08000000
+
+config SPL_OPENSBI_LOAD_ADDR
+	default 0x80000000
+
+config BOARD_SPECIFIC_OPTIONS # dummy
+	def_bool y
+	select SABER_SABER2020
+	select ENV_IS_IN_SPI_FLASH
+	imply SPI_FLASH
+	imply SPI_FLASH_ISSI
+
+endif

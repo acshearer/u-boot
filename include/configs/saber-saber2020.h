@@ -1,0 +1,16 @@
+
+// Saber Constants
+
+#define SABER_SDRAM_START         0x80000000
+#define SABER_SDRAM_SIZE          0x04000000
+
+#define SABER_PAYLOAD_OFFSET      0x00400000
+
+
+// U-Boot Configs
+
+#define CONFIG_SYS_LOAD_ADDR (SABER_SDRAM_START + SABER_PAYLOAD_OFFSET)
+
+#define CONFIG_SYS_INIT_SP_ADDR   0xfffffff0
+
+#define CONFIG_SYS_MALLOC_LEN     0x00400000
