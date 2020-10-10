@@ -299,7 +299,23 @@ fix_rela_dyn:
 
 	LREG	t3, -(REGBYTES*3)(t1)
 	li	t5, SYM_SIZE
-	mul	t0, t0, t5
+	
+
+// __s0 is not changed, __s1 is decremented to zero, __d is changed to the result
+.macro MULTIPLY __d, __s0, __s1
+	li \__d, 0
+	125:
+	beqz \__s1, 125f
+	add \__d, \__d, \__s0
+	addi \__s1, \__s1, -1
+	j 125b
+	125:
+.endm
+
+	MULTIPLY t3, t0, t5
+	mv t0, t3
+	li	t3, RELOC_TYPE
+
 	add	s5, t4, t0
 	LREG	t0, -(REGBYTES)(t1)	/* t0 <-- addend */
 	LREG	t5, REGBYTES(s5)
