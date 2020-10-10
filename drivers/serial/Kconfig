@@ -784,6 +784,9 @@ config SIFIVE_SERIAL
 	help
 	  This driver supports the SiFive UART. If unsure say N.
 
+config SABER_TV_SERIAL
+	bool "Saber TV support"
+
 config STI_ASC_SERIAL
 	bool "STMicroelectronics on-chip UART"
 	depends on DM_SERIAL && ARCH_STI

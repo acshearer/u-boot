@@ -5,7 +5,8 @@
 	compatible = "saber,saber20";
 
 	aliases {
-		serial0 = &uart0;
+		serial0 = &tv0;
+		serial1 = &uart0;
 	};
 
     cpus {
@@ -16,30 +17,30 @@
 			device_type = "cpu";
 			reg = <0>;
 			compatible = "riscv";
-			riscv,isa = "rv32iasnu";
+			riscv,isa = "rv32ia";
 			mmu-type = "sv32";
 		};
     };
     
-    memory {
-        #address-cells = <1>;
-        #size-cells = <1>;
+    // memory {
+    //     #address-cells = <1>;
+    //     #size-cells = <1>;
 
-        bram: memory@00000000 {
-            device_type = "memory";
-            reg = <0x00000000 0x10000>,
-                  <0x00010000 0x10000>,
-                  <0x00020000 0x10000>,
-                  <0xffff0000 0xffff>;
-            reg-names = "bram0, bram1, bram2, bramStk";
-        };
-
-        sram: memory@20000000 {
-            device_type = "memory";
-            reg = <0x30000000 0x4000000>;
-            reg-names = "sram0";
-        };
+    sram: memory@80000000 {
+        device_type = "memory";
+        reg = <0x80000000 0x4000000>;
+        reg-names = "sram0";
     };
+
+        // bram: memory@00000000 {
+        //     device_type = "memory";
+        //     reg = <0x00000000 0x10000>,
+        //           <0x00010000 0x10000>,
+        //           <0x00020000 0x10000>,
+        //           <0xffff0000 0xffff>;
+        //     reg-names = "bram0, bram1, bram2, bramStk";
+        // };
+    // };
 
     soc {
         #address-cells = <1>;

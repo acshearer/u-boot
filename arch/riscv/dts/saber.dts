@@ -10,7 +10,6 @@
 	compatible = "saber,saber2020";
 
 	chosen {
-		bootargs = "earlycon console=tvtty";
 		stdout-path = "serial0";
 	};
 };
