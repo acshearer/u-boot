@@ -4,12 +4,15 @@
 # Rick Chen, Andes Technology Corporation <rick@andestech.com>
 
 ifeq ($(CONFIG_ARCH_RV64I),y)
-	ARCH_BASE = rv64im
+	ARCH_BASE = rv64i
 	ABI = lp64
 endif
 ifeq ($(CONFIG_ARCH_RV32I),y)
-	ARCH_BASE = rv32im
+	ARCH_BASE = rv32i
 	ABI = ilp32
+endif
+ifeq ($(CONFIG_RISCV_ISA_M),y)
+	ARCH_M = m
 endif
 ifeq ($(CONFIG_RISCV_ISA_A),y)
 	ARCH_A = a
@@ -24,7 +27,7 @@ ifeq ($(CONFIG_CMODEL_MEDANY),y)
 	CMODEL = medany
 endif
 
-ARCH_FLAGS = -march=$(ARCH_BASE)$(ARCH_A)$(ARCH_C) -mabi=$(ABI) \
+ARCH_FLAGS = -march=$(ARCH_BASE)$(ARCH_A)$(ARCH_C)$(ARCH_M) -mabi=$(ABI) \
 	     -mcmodel=$(CMODEL)
 
 PLATFORM_CPPFLAGS	+= $(ARCH_FLAGS)
