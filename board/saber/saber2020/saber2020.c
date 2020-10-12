@@ -19,13 +19,15 @@ int board_init(void) {
 
 void print_stack_trace(void) {
     uint32_t stackPointer;
+    int i;
+
     asm volatile("mv %[value], sp" : [value] "=r" (stackPointer));
 
     printf("Stack trace:\n");
 
-    while(stackPointer <= 0xFFFFFFF0) {
+    for(i = 0; i < 32; i++) {
         uint32_t stackValue = *((uint32_t*)stackPointer);
-        if(stackValue != 0 && stackValue > 0x80400000 && stackValue < 0x80450000) {
+        if(stackValue != 0) {
             printf(" @%x:%x ", stackPointer, stackValue);
             // TV_print(" @");
             // TV_print_hex(stackPointer);
