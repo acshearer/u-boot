@@ -31,6 +31,19 @@ struct saber_tv_platdata {
 	struct saber_tv_regs regs;
 };
 
+static const char* input_buffer = "help\n\r";
+static int input_index = 0;
+
+static char _saber_tv_next_input_char(void){
+	char next;
+	next = input_buffer[input_index];
+	if(next == '\0'){
+		next = -EAGAIN;
+	}else{
+		input_index++;
+	}
+	return next;
+}
 
 static inline void _saber_tv_set_data(struct saber_tv_platdata *platdata, u32 data)
 {
@@ -65,10 +78,9 @@ static void _saber_tv_new_line(struct saber_tv_platdata *platdata)
 	_saber_tv_run_command(platdata, TV_COMMAND_SET_Y);
 }
 
-
 static int saber_tv_serial_getc(struct udevice *dev)
 {
-	return -EAGAIN;
+	return _saber_tv_next_input_char();
 }
 
 static int saber_tv_serial_putc(struct udevice *dev, const char ch)
@@ -84,14 +96,15 @@ static int saber_tv_serial_putc(struct udevice *dev, const char ch)
 			break;
 
 		default:
-			_saber_tv_set_data(platdata, ch);
-			_saber_tv_run_command(platdata, TV_COMMAND_PUT_CHAR);
+			if(ch >= ' ' && ch <= '~'){
+				_saber_tv_set_data(platdata, ch);
+				_saber_tv_run_command(platdata, TV_COMMAND_PUT_CHAR);
+			}
 			break;
 	}
 
 	return 0;
 }
-
 
 static int saber_tv_serial_probe(struct udevice *dev)
 {
