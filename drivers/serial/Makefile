@@ -69,7 +69,7 @@ obj-$(CONFIG_NULLDEV_SERIAL) += serial_nulldev.o
 obj-$(CONFIG_OWL_SERIAL) += serial_owl.o
 obj-$(CONFIG_OMAP_SERIAL) += serial_omap.o
 obj-$(CONFIG_MTK_SERIAL) += serial_mtk.o
-obj-$(CONFIG_SABER_TV_SERIAL) += serial_saber_tv.o
+obj-$(CONFIG_SABER_SBI_SERIAL) += serial_saber_sbi.o
 obj-$(CONFIG_SIFIVE_SERIAL) += serial_sifive.o
 obj-$(CONFIG_XEN_SERIAL) += serial_xen.o
 

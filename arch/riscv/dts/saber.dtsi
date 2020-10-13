@@ -58,7 +58,7 @@
         };
 
         tv0: tv@10003000 {
-            compatible = "saber,saber-tv";
+            compatible = "saber,saber-sbi-serial", "saber,saber-tv";
 			reg = <0x10003000 0x8>;
         };
 
