@@ -7,8 +7,6 @@
 #include <log.h>
 #include <init.h>
 
-#include "tv.h"
-
 
 int board_init(void) {
 	
@@ -28,7 +26,7 @@ void print_stack_trace(void) {
     for(i = 0; i < 32; i++) {
         uint32_t stackValue = *((uint32_t*)stackPointer);
         if(stackValue != 0) {
-            printf(" @%x:%x ", stackPointer, stackValue);
+            printf(" @%8x:%8x ", stackPointer, stackValue);
             // TV_print(" @");
             // TV_print_hex(stackPointer);
             // TV_print(":");
