@@ -1,16 +1,1 @@
-
-/dts-v1/;
-
-#include "saber.dtsi"
-
-/ {
-	#address-cells = <1>;
-	#size-cells = <1>;
-	model = "saber2020";
-	compatible = "saber,saber2020";
-
-	chosen {
-		stdout-path = "serial0";
-	};
-};
-
+../../../capstone-shared-saber-spec/of/saber.dts
