@@ -11,4 +11,9 @@ config SABER_RISCV
 	imply SPL_OPENSBI
 	imply SPL_LOAD_FIT
 	imply SABER_SBI_SERIAL
+	imply SPI
+	imply SPI_SIFIVE
+	imply MMC
+	imply MMC_SPI
+
 	

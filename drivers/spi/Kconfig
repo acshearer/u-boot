@@ -313,6 +313,9 @@ config SANDBOX_SPI
 		};
 	  };
 
+config SPI_SABER
+	bool "Saber SPI driver"
+	
 config SPI_SIFIVE
 	bool "SiFive SPI driver"
 	help
