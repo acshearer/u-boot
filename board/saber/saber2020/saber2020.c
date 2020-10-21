@@ -6,11 +6,16 @@
 #include <bootstage.h>
 #include <log.h>
 #include <init.h>
-
+#include <asm/u-boot.h>
+#include <asm/global_data.h>
 
 int board_init(void) {
 	
-    printf("Board init\n");
+    printf("SABER Board Init\n");
+
+    register volatile gd_t *gd asm ("gp");
+    
+    printf("Relocation Address: 0x%lx\n", gd->relocaddr);
 
 	return 0;
 }
