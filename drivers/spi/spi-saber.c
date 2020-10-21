@@ -139,12 +139,13 @@ static int saber_spi_set_speed(struct udevice *dev, uint speed) {
     
     // fake clock speeds, does not conform to HZ requested.
     // these constants are taken from drivers/mmc/mmc_spi.c
-    uint32_t speed_code = SPI_SPEED_SLOW;
-    if(speed == 400000){
-        speed_code = SPI_SPEED_SLOW;
-    }else if(speed == 25000000){
-        speed_code = SPI_SPEED_FAST;
-    }
+    // uint32_t speed_code = SPI_SPEED_SLOW;
+    // if(speed == 400000){
+    //     speed_code = SPI_SPEED_SLOW;
+    // }else if(speed == 25000000){
+    //     speed_code = SPI_SPEED_FAST;
+    // }
+    uint32_t speed_code = SPI_SPEED_FAST;
 
     uint32_t flags = readl(plat->regs->control);
 
