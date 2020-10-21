@@ -1,6 +1,9 @@
 
 // Saber Constants
 
+#ifndef __SABER_CONFIG_H
+#define __SABER_CONFIG_H
+
 #define SABER_SDRAM_START         0x80000000
 #define SABER_SDRAM_SIZE          0x04000000
 
@@ -14,3 +17,8 @@
 #define CONFIG_SYS_INIT_SP_ADDR   0xfffffff0
 
 #define CONFIG_SYS_MALLOC_LEN     0x00400000
+
+#define CONFIG_SYS_BOOTM_LEN      0x0f000000
+
+
+#endif

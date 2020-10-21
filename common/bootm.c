@@ -29,6 +29,7 @@
 #include <command.h>
 #include <bootm.h>
 #include <image.h>
+#include <config.h>
 
 #ifndef CONFIG_SYS_BOOTM_LEN
 /* use 8MByte as default max gunzip size */
