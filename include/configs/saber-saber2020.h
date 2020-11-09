@@ -7,7 +7,7 @@
 #define SABER_SDRAM_START         0x80000000
 #define SABER_SDRAM_SIZE          0x04000000
 
-#define SABER_PAYLOAD_OFFSET      0x00400000
+#define SABER_PAYLOAD_OFFSET      0x03000000
 
 
 // U-Boot Configs
